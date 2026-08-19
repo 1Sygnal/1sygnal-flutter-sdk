@@ -1,0 +1,31 @@
+PODS:
+  - Flutter (1.0.0)
+  - GRDB.swift (6.24.1):
+    - GRDB.swift/standard (= 6.24.1)
+  - GRDB.swift/standard (6.24.1)
+  - onesygnal (0.4.0):
+    - Flutter
+    - GRDB.swift (~> 6.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - onesygnal (from `.symlinks/plugins/onesygnal/ios`)
+
+SPEC REPOS:
+  trunk:
+    - GRDB.swift
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  onesygnal:
+    :path: ".symlinks/plugins/onesygnal/ios"
+
+SPEC CHECKSUMS:
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  GRDB.swift: 136dcb5d8dddca50aae3ba7d77475f79e7232cd8
+  onesygnal: ce1add6a96ca2de3fcd8929bd890f35ff8e78c58
+
+PODFILE CHECKSUM: 8cd2902f76235f02b9cf07d3f0d3f2d955056c13
+
+COCOAPODS: 1.17.0
