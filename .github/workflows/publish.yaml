@@ -9,7 +9,7 @@ jobs:
   verify-sdk-version:
     permissions:
       contents: read
-    uses: ./.github/workflows/verify-sdk-version.yml
+    uses: ./.github/workflows/verify-sdk-version.yaml
     with:
       tag: ${{ github.ref_name }}
 
