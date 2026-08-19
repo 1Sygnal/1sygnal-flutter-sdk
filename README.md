@@ -6,10 +6,9 @@ this README's contents appear on the landing page for your package.
 OneSygnal is an in-app survey SDK: track user events, and the SDK evaluates them against your
 survey trigger rules and displays a matching survey natively, above your entire app.
 
-This package is a thin Flutter bridge over the native [Android](../android-sdk) and
-[iOS](../ios-sdk) SDKs — see [`ARCHITECTURE.md`](ARCHITECTURE.md) for how the bridge works. All
-targeting, rendering, and persistence happens natively; this package only marshals calls across a
-platform channel.
+This package is a thin Flutter bridge over OneSygnal's native Android and iOS SDKs. All
+targeting, rendering, and persistence happens natively; this package only marshals calls across
+a platform channel.
 
 ## Getting started
 
@@ -58,7 +57,4 @@ See `example/` for a full demo app.
 
 ## Additional information
 
-File issues against this monorepo. See [`ARCHITECTURE.md`](ARCHITECTURE.md) for the channel
-contract and native plugin structure, and
-[`docs/native-sdk-port/04-flutter-bridge.md`](../../docs/native-sdk-port/04-flutter-bridge.md)
-for the design behind this bridge conversion.
+File issues on this repository's issue tracker.
