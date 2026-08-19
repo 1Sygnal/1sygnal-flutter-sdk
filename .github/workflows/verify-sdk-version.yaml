@@ -1,0 +1,38 @@
+name: Verify SDK Version Consistency
+
+permissions:
+  contents: read
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: 'Git tag to verify against pubspec.yaml (e.g. 1.0.0)'
+        required: false
+        type: string
+
+jobs:
+  verify-sdk-version:
+    name: Check SDK Version Consistency
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Compare tag version with pubspec.yaml
+        if: inputs.tag != ''
+        env:
+          TAG_VERSION: ${{ inputs.tag }}
+        run: |
+          PUBSPEC_VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //' | tr -d '[:space:]')
+
+          echo "Tag version: $TAG_VERSION"
+          echo "pubspec.yaml version: $PUBSPEC_VERSION"
+
+          if [ "$TAG_VERSION" != "$PUBSPEC_VERSION" ]; then
+            echo "ERROR: Tag version ($TAG_VERSION) does not match pubspec.yaml version ($PUBSPEC_VERSION)"
+            exit 1
+          else
+            echo "SUCCESS: Versions match ($TAG_VERSION)"
+          fi
