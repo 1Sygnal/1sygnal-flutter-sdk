@@ -1,3 +1,7 @@
+## 1.0.0
+
+Initial public release on pub.dev.
+
 ## 0.4.0
 
 The Android host-app requirement from 0.2.0 is gone: `SurveyWindowOverlay` now supplies its own
