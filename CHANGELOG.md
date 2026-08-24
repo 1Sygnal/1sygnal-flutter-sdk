@@ -1,3 +1,15 @@
+## 1.0.1
+
+### Fixes
+
+* Android: the native `onesygnal-sdk` AAR dependency was pinned to `0.1.0` regardless of which
+  native SDK version was actually current at release time — `1.0.0` shipped depending on this same
+  stale `0.1.0` AAR. The publish pipeline now resolves it to the real native release version.
+* The `WRAPPER_VERSION`/`wrapperVersion` identifiers this plugin reports to the native SDK (surfaced
+  in `clientContext`/`$lib_version` on tracked events) had drifted to `"0.4.0"` in the published
+  `1.0.0` package instead of tracking the actual package version — the publish pipeline now stamps
+  both to the real release version.
+
 ## 1.0.0
 
 Initial public release on pub.dev.

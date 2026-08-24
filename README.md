@@ -12,6 +12,18 @@ a platform channel.
 
 ## Getting started
 
+### iOS setup
+
+This plugin depends on the native `OneSygnalSDK` pod, which isn't published to the CocoaPods
+Trunk. Add it to your app's `ios/Podfile` before running `pod install`:
+
+```ruby
+target 'Runner' do
+  pod 'OneSygnalSDK', :podspec => 'https://raw.githubusercontent.com/1Sygnal/1sygnal-ios-sdk/VERSION/OneSygnalSDK.podspec'
+  # ...
+end
+```
+
 Register a listener for survey lifecycle events first (this just subscribes — it doesn't require
 the SDK to already be running), then set your API key in code (no need to edit
 `AndroidManifest.xml`/`Info.plist`) and initialize:

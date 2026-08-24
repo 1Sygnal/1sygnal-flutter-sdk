@@ -5,9 +5,10 @@ import UIKit
 // Identifies this plugin's calls to the native SDK as coming from the Flutter bridge rather than
 // a native iOS app — see OneSygnal.setSdkWrapper(). Keep in sync with
 // apps/flutter-sdk/pubspec.yaml's `version` on every release; there's no runtime way to read the
-// Dart package's own version from Swift.
+// Dart package's own version from Swift. sync-flutter-sdk.yml also overwrites this to the real
+// release version when publishing, as a safety net against this drifting.
 private let wrapperLibrary = "onesygnal-flutter"
-private let wrapperVersion = "0.4.0"
+private let wrapperVersion = "1.0.1"
 
 /// Thin bridge over the native `OneSygnal` iOS SDK — every method here delegates straight
 /// through, no business logic lives in this plugin. Mirrors the equivalent

@@ -13,9 +13,10 @@ import app.onesygnal.sdk.api.OneSygnal
 // Identifies this plugin's calls to the native SDK as coming from the Flutter bridge rather than
 // a native Android app — see OneSygnal.setSdkWrapper(). Keep in sync with
 // apps/flutter-sdk/pubspec.yaml's `version` on every release; there's no runtime way to read the
-// Dart package's own version from Kotlin.
+// Dart package's own version from Kotlin. sync-flutter-sdk.yml also overwrites this to the real
+// release version when publishing, as a safety net against this drifting.
 private const val WRAPPER_LIBRARY = "onesygnal-flutter"
-private const val WRAPPER_VERSION = "0.4.0"
+private const val WRAPPER_VERSION = "1.0.1"
 
 /**
  * Thin bridge over the native [OneSygnal] Android SDK — every method here delegates straight

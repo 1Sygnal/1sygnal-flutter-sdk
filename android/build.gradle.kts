@@ -20,8 +20,9 @@ allprojects {
         mavenCentral()
         // The native OneSygnal AAR isn't published to Maven Central yet — see
         // apps/android-sdk/onesygnal/build.gradle.kts's own local.properties note. This bridge
-        // resolves it from the local Maven cache; swap for the real coordinate/repo once phase 2's
-        // native SDK cuts a real release.
+        // resolves it from the local Maven cache for local dev; sync-flutter-sdk.yml's "Apply
+        // production transforms" step swaps this for the real published repo (and the dependency
+        // version below for the real native release) when publishing to pub.dev.
         maven { url = uri("https://repo.1sygnal.app") }
     }
 }
@@ -76,7 +77,12 @@ android {
 }
 
 dependencies {
-    implementation("app.onesygnal:onesygnal-sdk:0.1.0")
+    // 0.1.0 matches :onesygnal's own local-publish default (see its build.gradle.kts) — a plain
+    // `./gradlew :onesygnal:publishToMavenLocal` with no -PonesygnalVersion override publishes
+    // under this same version, so local dev resolves correctly against the local Maven cache
+    // repository above. sync-flutter-sdk.yml substitutes this for the real native_sdk_version
+    // input when publishing.
+    implementation("app.onesygnal:onesygnal-sdk:1.0.1")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.0.0")
