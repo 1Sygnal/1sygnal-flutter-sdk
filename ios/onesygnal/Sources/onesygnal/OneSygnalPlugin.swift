@@ -8,7 +8,7 @@ import UIKit
 // Dart package's own version from Swift. sync-flutter-sdk.yml also overwrites this to the real
 // release version when publishing, as a safety net against this drifting.
 private let wrapperLibrary = "onesygnal-flutter"
-private let wrapperVersion = "1.0.1"
+private let wrapperVersion = "1.0.2"
 
 /// Thin bridge over the native `OneSygnal` iOS SDK — every method here delegates straight
 /// through, no business logic lives in this plugin. Mirrors the equivalent
@@ -23,14 +23,9 @@ private let wrapperVersion = "1.0.1"
 public class OneSygnalPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
     // Registered once per event name in onListen, cancelled in onCancel — only listen to native
     // events while Dart is actually subscribed to the EventChannel stream.
-    // contract:events:begin — asserted against fixtures/channel/event-channel.json
-    private static let eventNames = [
-        "ready",
-        "survey:shown",
-        "survey:completed",
-        "survey:dismissed",
-        "survey:question_answered",
-    ]
+    // contract:events:begin — asserted against fixtures/channel/event-channel.json — derives from
+    // apps/ios-sdk's OneSygnalEvent.swift, which now carries the actual marker pair
+    private static let eventNames = OneSygnalEvent.allCases.map(\.rawValue)
     // contract:events:end
 
     private var eventSink: FlutterEventSink?

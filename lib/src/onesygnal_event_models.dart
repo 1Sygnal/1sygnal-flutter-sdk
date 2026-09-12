@@ -1,5 +1,7 @@
 const _surveyId = 'surveyId';
 const _questionId = 'questionId';
+const _answer = 'answer';
+const _languageCode = 'languageCode';
 
 /// Emitted every time a survey is shown to the user.
 class SurveyShownEvent {
@@ -47,15 +49,22 @@ class SurveyDismissedEvent {
 
 /// Emitted as soon as the visitor answers a question in a survey.
 class QuestionAnsweredEvent {
-  /// Creates a [QuestionAnsweredEvent] for the given [surveyId] and
-  /// [questionId].
-  QuestionAnsweredEvent({required this.surveyId, required this.questionId});
+  /// Creates a [QuestionAnsweredEvent] for the given [surveyId], [questionId],
+  /// [answer], and [languageCode].
+  QuestionAnsweredEvent({
+    required this.surveyId,
+    required this.questionId,
+    required this.answer,
+    required this.languageCode,
+  });
 
   /// Builds a [QuestionAnsweredEvent] from the event-channel payload [map].
   factory QuestionAnsweredEvent.from(Map<String, dynamic> map) {
     return QuestionAnsweredEvent(
       surveyId: map[_surveyId] as String,
       questionId: map[_questionId] as String,
+      answer: map[_answer],
+      languageCode: map[_languageCode] as String,
     );
   }
 
@@ -64,4 +73,13 @@ class QuestionAnsweredEvent {
 
   /// The ID of the question that was answered.
   final String questionId;
+
+  /// The raw answer value — shape depends on the question type (e.g. an
+  /// `int` for NPS, a `String` for a choice's option ID, a `List` for
+  /// multi-select). `null` if the question was optional and left unanswered.
+  final dynamic answer;
+
+  /// The language code the survey was rendered in when this question was
+  /// answered.
+  final String languageCode;
 }

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:onesygnal/src/onesygnal_event_listener.dart';
 import 'package:onesygnal/src/onesygnal_event_models.dart';
+import 'package:onesygnal/src/onesygnal_event_names.dart';
 import 'package:onesygnal/src/onesygnal_platform_interface.dart';
 
 /// The (only) implementation of [OneSygnalPlatform] — talks to the native
@@ -124,17 +125,19 @@ class OneSygnalChannels extends OneSygnalPlatform {
     // event), which would otherwise mutate _listeners mid-iteration and
     // throw ConcurrentModificationError.
     for (final listener in List.of(_listeners)) {
-      switch (map['event_type'] as String) {
-        case 'ready':
+      switch (OneSygnalEventName.fromWireName(map['event_type'] as String)) {
+        case OneSygnalEventName.ready:
           listener.ready();
-        case 'survey:shown':
+        case OneSygnalEventName.surveyShown:
           listener.surveyShown(SurveyShownEvent.from(map));
-        case 'survey:completed':
+        case OneSygnalEventName.surveyCompleted:
           listener.surveyCompleted(SurveyCompletedEvent.from(map));
-        case 'survey:dismissed':
+        case OneSygnalEventName.surveyDismissed:
           listener.surveyDismissed(SurveyDismissedEvent.from(map));
-        case 'survey:question_answered':
+        case OneSygnalEventName.surveyQuestionAnswered:
           listener.questionAnswered(QuestionAnsweredEvent.from(map));
+        case null:
+          break;
       }
     }
   }

@@ -1,3 +1,13 @@
+## 1.0.2
+
+### New
+
+* `QuestionAnsweredEvent` now carries `answer` (the raw answer value — its shape depends on the
+  question type, and it's `null` if an optional question was left unanswered) and `languageCode`
+  (the language the survey was rendered in), alongside the existing `surveyId`/`questionId`. Both
+  native SDKs already computed these values for the `survey.question.answered` webhook; they're
+  now also included in the event this plugin already delivered to Dart listeners.
+
 ## 1.0.1
 
 ### Fixes
