@@ -7,7 +7,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'onesygnal'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'Flutter bindings for the OneSygnal native iOS SDK.'
   s.description      = <<-DESC
                       Official Flutter plugin bridging to the native OneSygnal iOS SDK.
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.source_files     = 'onesygnal/Sources/onesygnal/**/*'
   s.dependency 'Flutter'
-  s.dependency 'OneSygnalSDK', '~> 1.0.2'
+  s.dependency 'OneSygnalSDK', '~> 1.0.3'
 
   s.platform         = :ios, '15.0'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

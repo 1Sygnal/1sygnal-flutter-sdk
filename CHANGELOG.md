@@ -1,3 +1,14 @@
+## 1.0.3
+
+Internal only — no public API or wire-value changes.
+
+* Event names like `"survey:question_answered"` and `"survey_dismissed"` were repeated as raw
+  string literals at every call site across this plugin's Dart code and its Android/iOS native
+  bridges. Both vocabularies (internal tracking names vs. client-facing emit/on names) are now
+  declared once (`src/onesygnal_event_names.dart`, not part of this package's public API) and
+  referenced everywhere; the native plugin bridges derive their event list from the native SDKs'
+  own public enum instead of hand-typing a duplicate copy that could drift.
+
 ## 1.0.2
 
 ### New

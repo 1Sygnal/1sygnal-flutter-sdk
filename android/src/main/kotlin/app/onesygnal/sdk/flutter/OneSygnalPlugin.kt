@@ -17,7 +17,7 @@ import app.onesygnal.sdk.api.OneSygnalEvent
 // Dart package's own version from Kotlin. sync-flutter-sdk.yml also overwrites this to the real
 // release version when publishing, as a safety net against this drifting.
 private const val WRAPPER_LIBRARY = "onesygnal-flutter"
-private const val WRAPPER_VERSION = "1.0.2"
+private const val WRAPPER_VERSION = "1.0.3"
 
 /**
  * Thin bridge over the native [OneSygnal] Android SDK — every method here delegates straight

@@ -8,7 +8,7 @@ import UIKit
 // Dart package's own version from Swift. sync-flutter-sdk.yml also overwrites this to the real
 // release version when publishing, as a safety net against this drifting.
 private let wrapperLibrary = "onesygnal-flutter"
-private let wrapperVersion = "1.0.2"
+private let wrapperVersion = "1.0.3"
 
 /// Thin bridge over the native `OneSygnal` iOS SDK — every method here delegates straight
 /// through, no business logic lives in this plugin. Mirrors the equivalent
