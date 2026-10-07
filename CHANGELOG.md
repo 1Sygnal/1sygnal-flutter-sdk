@@ -1,3 +1,24 @@
+## 1.0.4
+
+No API changes — update to pick up the fixes below.
+
+### Fixes
+
+* Surveys now reappear after an account is reactivated. Previously, if an account was suspended and
+  then restored while the app was running, surveys could stay empty until the app was restarted.
+* A survey that is already on screen when your account reaches its monthly response limit can now
+  still be completed and submitted. Previously, that final response was rejected.
+* Events that can never be accepted (for example, once your monthly event limit is reached) are no
+  longer retried repeatedly in the background. Events that failed because of a temporary problem,
+  such as a network error or a busy server, are still retried.
+* `setSurveysEnabled(true)` no longer shows surveys while an account is suspended.
+
+### Subscription status
+
+* Accounts with a past-due payment keep working normally: events are collected and surveys are
+  shown.
+* Suspended accounts keep collecting events, but surveys are not shown.
+
 ## 1.0.3
 
 Internal only — no public API or wire-value changes.
