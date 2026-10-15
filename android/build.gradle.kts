@@ -80,9 +80,9 @@ dependencies {
     // 0.1.0 matches :onesygnal's own local-publish default (see its build.gradle.kts) — a plain
     // `./gradlew :onesygnal:publishToMavenLocal` with no -PonesygnalVersion override publishes
     // under this same version, so local dev resolves correctly against the local Maven cache
-    // repository above. sync-flutter-sdk.yml substitutes this for the real native_sdk_version
+    // repository above. sync-flutter-sdk.yml substitutes this for the real native_android_sdk_version
     // input when publishing.
-    implementation("app.onesygnal:onesygnal-sdk:1.0.4")
+    implementation("app.onesygnal:onesygnal-sdk:1.0.5")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.0.0")

@@ -3,6 +3,8 @@ This README describes the package. If you publish this package to pub.dev,
 this README's contents appear on the landing page for your package.
 -->
 
+[Website](https://1sygnal.app) · [Documentation](https://docs.1sygnal.app/platforms/flutter)
+
 OneSygnal is an in-app survey SDK: track user events, and the SDK evaluates them against your
 survey trigger rules and displays a matching survey natively, above your entire app.
 

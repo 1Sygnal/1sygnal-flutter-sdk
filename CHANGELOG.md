@@ -1,3 +1,13 @@
+## 1.0.5
+
+No API changes — update to pick up the fix below.
+
+### Fixes
+
+* Fixed an Android crash (`NetworkOnMainThreadException`) when the SDK finished a network request on the
+  main thread with StrictMode network detection enabled. Responses are now read and closed off the main
+  thread.
+
 ## 1.0.4
 
 No API changes — update to pick up the fixes below.

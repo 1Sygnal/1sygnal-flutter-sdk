@@ -1,7 +1,8 @@
 name: onesygnal
-description: "OneSygnal Flutter SDK — in-app surveys triggered by user events."
-version: 1.0.4
+description: "1Sygnal Flutter SDK — in-app surveys triggered by user events."
+version: 1.0.5
 homepage: https://1sygnal.app/
+documentation: https://docs.1sygnal.app/platforms/flutter
 repository: https://github.com/1Sygnal/1sygnal-flutter-sdk
 issue_tracker: https://github.com/1Sygnal/1sygnal-flutter-sdk/issues
 
