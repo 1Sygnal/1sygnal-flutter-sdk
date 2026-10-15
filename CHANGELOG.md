@@ -1,3 +1,15 @@
+## 1.0.6
+
+No API changes — update to pick up the fix below.
+
+### Fixes
+
+* Fixed Android survey trigger rules being ignored on devices with 16 KB memory pages (Android 15+).
+  The JavaScript engine's native library is now 16 KB-aligned, so it loads on those devices and
+  surveys respect their trigger rules instead of silently showing regardless of them. This also
+  clears Google Play's 16 KB page-size warning for `libquickjs.so`, which blocks app updates
+  targeting Android 15+.
+
 ## 1.0.5
 
 No API changes — update to pick up the fix below.

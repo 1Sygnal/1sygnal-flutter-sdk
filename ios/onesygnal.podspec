@@ -7,7 +7,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'onesygnal'
-  s.version          = '1.0.5'
+  s.version          = '1.0.6'
   s.summary          = 'Flutter bindings for the OneSygnal native iOS SDK.'
   s.description      = <<-DESC
                       Official Flutter plugin bridging to the native OneSygnal iOS SDK.
