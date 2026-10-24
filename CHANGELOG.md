@@ -1,3 +1,14 @@
+## 1.0.7
+
+No API changes — update to pick up the fix below.
+
+### Fixes
+
+* Fixed survey completion time showing as roughly 0 seconds in responses sent from the Android and iOS
+  SDKs. The SDKs now record when a survey is shown and send that as `startedAt` with the response, so
+  Avg. Time and the webhook `startedAt` reflect the time the respondent actually spent on the survey.
+  Responses queued before updating keep the previous behaviour.
+
 ## 1.0.6
 
 No API changes — update to pick up the fix below.
