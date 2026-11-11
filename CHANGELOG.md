@@ -1,3 +1,16 @@
+## 1.0.8
+
+No Dart API changes — update to pick up survey branching from the Android and iOS SDKs this plugin
+wraps. Pin this release to native Android / iOS builds that include branching support.
+
+### New
+
+* Survey branching (skip-to / end survey): when a survey’s config includes `branchingRules` from the
+  API, answering a question can skip ahead to a later question or end the survey instead of always
+  advancing to the next question in order. Surveys without branching rules keep the previous linear
+  behaviour. Rendering and navigation stay in the native overlay (`SurveyNavigator`); Flutter apps
+  get this by depending on matching native SDK versions — there is no new Dart surface.
+
 ## 1.0.7
 
 No API changes — update to pick up the fix below.
