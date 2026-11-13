@@ -82,7 +82,7 @@ dependencies {
     // under this same version, so local dev resolves correctly against the local Maven cache
     // repository above. sync-flutter-sdk.yml substitutes this for the real native_android_sdk_version
     // input when publishing.
-    implementation("app.onesygnal:onesygnal-sdk:1.0.8")
+    implementation("app.onesygnal:onesygnal-sdk:1.0.9")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.0.0")

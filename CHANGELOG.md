@@ -1,3 +1,36 @@
+## 1.0.9
+
+No Dart API changes — update the `onesygnal` plugin to 1.0.9 to pick up the fixes below. Apps on
+1.0.8 should upgrade: the iOS crash below can occur on a fresh install with a flaky network.
+
+### Fixes
+
+* Fixed an iOS crash on first launch (`unable to find bundle named OneSygnalSDK_OneSygnalSDK`). When
+  the SDK couldn't download its trigger-rules script on a fresh install — offline, a timeout, or a
+  server error — it fell back to a bundled copy that the prebuilt iOS framework didn't actually
+  contain, and the app terminated. The fallback script is now compiled into the framework, so this
+  path can no longer crash.
+* `initialize()` no longer waits on the network for the trigger-rules script, on iOS and Android.
+  Previously a stalled connection could hold `initialize()` (and the `ready` event) for up to 30
+  seconds, and surveys with trigger rules could be shown to the wrong users while the script was
+  missing. The SDK now starts immediately from the last cached script (or the one built into the
+  SDK) and refreshes it in the background, with short network timeouts. A refreshed script takes
+  effect without blocking anything.
+* A downloaded trigger-rules script is now validated before it is cached or used. A response that
+  isn't a valid script (for example a captive-portal page returned with a 200 status) is ignored, and
+  an unusable cached copy is discarded in favour of the built-in one, instead of making every
+  trigger-rule check silently pass.
+* The SDK now shuts down cleanly if the background refresh is still running, and a script refresh can
+  no longer re-enable a rules engine that was already shut down.
+
+### Upgrade notes
+
+* Update the `onesygnal` plugin version in your `pubspec.yaml` (for example `onesygnal: ^1.0.9`) and
+  rebuild; the matching native Android / iOS SDKs come with the plugin, so there is nothing to pin
+  separately.
+* On a fresh install, trigger rules are evaluated with the script built into the SDK until the first
+  background refresh succeeds; after that the refreshed script is used, including on later launches.
+
 ## 1.0.8
 
 No Dart API changes — update to pick up survey branching from the Android and iOS SDKs this plugin
