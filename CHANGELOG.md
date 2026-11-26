@@ -1,3 +1,45 @@
+## 1.0.11
+
+No Dart API changes — update the `onesygnal` plugin to 1.0.11 to pick up per-survey daily caps and
+project-timezone daily limits from the Android and iOS SDKs this plugin wraps. Pin this release to
+native Android / iOS builds that include them.
+
+### New
+
+* Per-survey Daily cap: a survey's own **Daily cap** (Configure → Frequency & Scheduling in the
+  dashboard) now limits how many times one device is shown that survey in a day. It replaces the
+  project's daily cap for that survey, and leaving it empty keeps the project cap. Every showing
+  still counts toward the project cap, so a heavily shown survey uses up the shared allowance for
+  other surveys. The project cooldown still applies, so a cap above 1 is only reached if the
+  cooldown is shorter than the time between showings — shorten it in Project settings, or turn on
+  Override global cooldown for that survey. Override global cooldown and the Every event
+  frequency skip the survey's cap along with the project cooldown and cap. There is no new Dart
+  surface; the limit is applied by the native SDKs.
+
+### Fixes
+
+* Daily limits now reset at midnight in the project's timezone (Project settings → Timezone)
+  instead of at midnight on the device. Before, the project's daily cap followed each phone's own
+  clock while the web SDK used UTC, so the same project reset at different times on different
+  devices and platforms. The SDK reads the timezone from its config and falls back to UTC when it
+  has none, for example from a config cached by an older version.
+
+### Upgrade notes
+
+* Update the `onesygnal` plugin version in your `pubspec.yaml` (for example `onesygnal: ^1.0.11`)
+  and rebuild; the matching native Android / iOS SDKs come with the plugin, so there is nothing to
+  pin separately.
+* Counts are kept per device, not per user, so someone on two phones gets the full allowance on
+  each.
+* A showing is counted when the survey is closed — answered or dismissed — rather than the moment
+  it appears, so a survey the user never closes (for example the app is killed mid-survey) does not
+  use up the cap.
+* If the project's timezone puts a device on a different calendar day than it was on before, the
+  day's count resets once on the first launch after updating, so a user can see at most one extra
+  survey that day.
+* A Daily cap saved on a survey earlier in the dashboard takes effect on devices running this
+  version. Check the surveys you expect to be capped before you ship the update.
+
 ## 1.0.10
 
 No Dart API changes — update the `onesygnal` plugin to 1.0.10 to pick up configurable Rating Scale
