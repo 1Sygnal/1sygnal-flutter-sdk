@@ -1,3 +1,32 @@
+## 1.0.10
+
+No Dart API changes — update the `onesygnal` plugin to 1.0.10 to pick up configurable Rating Scale
+questions from the Android and iOS SDKs this plugin wraps. Pin this release to native Android / iOS
+builds that include the configurable range.
+
+### New
+
+* Configurable Rating Scale range: a Rating Scale question can now run over any whole-number range
+  the survey author picks in the dashboard — for example 1–7, 1–10 or 0–10 — instead of always
+  showing 1–5. The scale starts at 0 or 1 and ends at 10 at most. Surveys that don't set a range
+  keep the 1–5 scale. The answer is still sent as `{ "value": <int> }`, so responses, webhooks and
+  exports need no changes. There is no new Dart surface; rendering stays in the native overlay.
+
+### Fixes
+
+* A Rating Scale always stays on a single row, on every phone width and with large system text.
+  The number size is now measured from the width of each cell (the row width divided by the number
+  of points), so a 10 or 11-point scale fits without wrapping and "10" is never clipped. Numbers
+  ignore the system font scale so a large font setting can't push them out of their cell.
+
+### Upgrade notes
+
+* Update the `onesygnal` plugin version in your `pubspec.yaml` (for example `onesygnal: ^1.0.10`)
+  and rebuild; the matching native Android / iOS SDKs come with the plugin, so there is nothing to
+  pin separately.
+* On narrow screens an 11-point scale (0–10) gives cells narrower than the 44 pt tap-target
+  guideline. Prefer 1–10 or fewer points where tap accuracy matters.
+
 ## 1.0.9
 
 No Dart API changes — update the `onesygnal` plugin to 1.0.9 to pick up the fixes below. Apps on
